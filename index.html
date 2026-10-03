@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Task Reward Demo</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#0b0d12;color:#fff}
+.wrap{max-width:520px;margin:auto;padding:24px}.card{background:#151923;border:1px solid #272d3a;border-radius:18px;padding:20px;margin:14px 0}
+h1{margin:0 0 8px;font-size:30px}.muted{color:#9da5b5}.balance{font-size:30px;font-weight:700;margin:8px 0 18px}
+button,input{width:100%;padding:13px;border-radius:12px;border:0;margin-top:10px;font-size:15px}
+button{background:#fff;color:#111;font-weight:700;cursor:pointer}.secondary{background:#292f3d;color:#fff}
+input{background:#0d1017;color:#fff;border:1px solid #303746}
+.task{padding:15px;border:1px solid #2c3340;border-radius:14px;margin-top:12px}.row{display:flex;gap:10px}.row button{flex:1}
+.hidden{display:none}.ok{color:#75e6a5}.warn{color:#ffd166}.small{font-size:13px}
+nav{display:flex;gap:8px;margin:18px 0}nav button{background:#202532;color:#fff}.active{background:#fff;color:#111}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Task Reward</h1>
+<p class="muted">demo / simulasi — tidak ada uang asli</p>
+
+<div id="login" class="card">
+<h2>Masuk / Daftar</h2>
+<input id="name" placeholder="Nama pengguna">
+<button onclick="login()">Masuk</button>
+</div>
+
+<div id="app" class="hidden">
+<nav>
+<button id="userTab" class="active" onclick="show('user')">User</button>
+<button id="adminTab" onclick="show('admin')">Admin</button>
+</nav>
+
+<section id="user">
+<div class="card">
+<div class="muted">saldo simulasi</div>
+<div class="balance" id="balance">Rp0</div>
+<div id="hello"></div>
+</div>
+
+<div class="card">
+<h2>Tugas</h2>
+<div class="task">
+<b>Download aplikasi + masukkan kode undangan</b>
+<p class="muted small">Hadiah: Rp5.000</p>
+<button onclick="downloadTask()">Download aplikasi (simulasi)</button>
+<input id="invite" placeholder="Masukkan kode undangan">
+<button onclick="submitTask()">Kirim tugas</button>
+<p id="taskStatus" class="small"></p>
+</div>
+</div>
+
+<div class="card">
+<h2>Penarikan</h2>
+<input id="account" placeholder="Nomor rekening / e-wallet">
+<button onclick="saveAccount()">Simpan metode</button>
+<input id="amount" type="number" placeholder="Jumlah penarikan">
+<button onclick="withdraw()">Tarik saldo</button>
+<p id="withdrawStatus" class="small"></p>
+</div>
+</section>
+
+<section id="admin" class="hidden">
+<div class="card">
+<h2>Admin</h2>
+<p class="muted">Panel ini hanya simulasi untuk testing.</p>
+<div id="adminData"></div>
+<button class="secondary" onclick="verify()">Verifikasi tugas user</button>
+<button class="secondary" onclick="pay()">Bayar penarikan (simulasi)</button>
+</div>
+</section>
+
+<button class="secondary" onclick="logout()">Keluar</button>
+</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
